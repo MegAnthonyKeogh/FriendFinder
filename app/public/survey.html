@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery.js"></script>
+     
     <title>Survey</title>
 </head>
 
@@ -21,15 +23,15 @@
     <form>
         <div class="form-group">
             <label for="exampleInputEmail1">Name (Required)</label>
-            <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+            <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Link to Photo of Image (Required)</label>
-            <input type="img" class="form-control" id="exampleInputPassword1" placeholder="link">
+            <input type="img" class="form-control" id="pic" placeholder="link">
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 1.) Your mind is always buzzing with unexplored ideas and plans.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q1">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -39,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 2.) Generally speaking, you rely more on your experience than your imagination.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q2">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -49,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 3.) You find it easy to stay relaxed and focused even when there is some pressure.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q3">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -59,7 +61,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 4.) You rarely do something just out of sheer curiosity.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q4">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -69,7 +71,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 5.) People can rarely upset you.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q5">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -79,7 +81,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 6.) It is often difficult for you to relate to other people’s feelings.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q6">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -89,7 +91,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 7.) In a discussion, truth should be more important than people’s sensitivities.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q7">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -99,7 +101,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 8.) You rarely get carried away by fantasies and ideas.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q8">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -109,7 +111,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 9.) You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q9">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -119,7 +121,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Question 10.) You feel more energetic after spending time with a group of people.</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="Q10">
                     <option>1(Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -127,7 +129,7 @@
                     <option>5(Strongly Agree)</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
     </form>
     <ul class="nav">
             <li class="nav-item">
@@ -139,41 +141,39 @@
          </ul>
 
 
+         <script>
+            $("#submit").on("click", function (event) {
+                event.preventDefault();
+                var newFriend = {
+                    name: $("#name").val().trim(),
+                    img: $("#pic").val().trim(),
+                    scores: [{
+                    Q1: $("#Q1").val().trim(),
+                    Q2: $("#Q2").val().trim(),
+                    Q3: $("#Q3").val().trim(),
+                    Q4: $("#Q4").val().trim(),
+                    Q5: $("#Q5").val().trim(),
+                    Q6: $("#Q6").val().trim(),
+                    Q7: $("#Q7").val().trim(),
+                    Q8: $("#Q8").val().trim(),
+                    Q9: $("#Q9").val().trim(),
+                    Q10: $("#Q10").val().trim()
+                    }]
+                }
+    
+                $.post("/api/friends", newFriend)
+                    .then(function (data) {
+                        alert("new User!");
+                    })
+    
+    
+            })
+        </script>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
+  
 </body>
 
 </html>
