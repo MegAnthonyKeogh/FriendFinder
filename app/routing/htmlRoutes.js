@@ -11,6 +11,12 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
 
+  app.post("/survey", function (req, res) {
+    // var newUser = req.body;
+    // theBigCompare(newUser);
+    //  return res.json(winner);
+  });
+
   // If no matching route is found default to home
   app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
