@@ -1,7 +1,7 @@
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
-//var userArray = require('./app/data/friends.js')
+//var userArray = require('./app/data/friends.js');
  
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -12,16 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
-//require("./routes/apiRoutes")(app);
-// require("../routes/htmlRoutes")(app);
-
-var userArray = [ 
-  {
+var userArray = [{
   name: "Megan",
   photo: "pic",
   scores: [
       Q1 = "",
-      Q2 =  "",
+      Q2 = "",
       Q3 = "",
       Q4 = "",
       Q5 = "",
@@ -31,8 +27,11 @@ var userArray = [
       Q9 = "",
       Q10 = ""
   ]
-} ];
+}];
 
+
+//require("./routes/apiRoutes")(app);
+// require("../routes/htmlRoutes")(app);
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "./app/public/home.html"));
@@ -49,7 +48,7 @@ app.get("/api/friends/", function (req, res){
 });
 
 app.post("/api/friends/", function (req, res) {
-  var newUser = req.body
+  var newUser = req.body;
   userArray.push(newUser);
    return res.json(newUser);
 });

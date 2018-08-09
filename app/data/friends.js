@@ -1,9 +1,9 @@
-var userArray = [ {
+var userArray = [{
     name: "Megan",
     photo: "pic",
     scores: [
         Q1 = "",
-        Q2 =  "",
+        Q2 = "",
         Q3 = "",
         Q4 = "",
         Q5 = "",
@@ -11,8 +11,8 @@ var userArray = [ {
         Q7 = "",
         Q8 = "",
         Q9 = "",
-        Q10 = "",
-    ]
-} ]
+        Q10 = ""
+    ],
+}];
 
-modules.export = userArray;
+module.export = userArray;
