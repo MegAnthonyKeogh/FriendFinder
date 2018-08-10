@@ -26,6 +26,7 @@ function theBigCompare(newUser) {
 
         if (result === null) {
             result = sum;
+            winner = users[i];
             console.log("first match is " + users[i].name + " with a sum of " + sum);
 
         } else if (result > sum) {
