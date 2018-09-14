@@ -23,6 +23,22 @@ After you `touch server.js` make your app directory with the command `mkdir app`
 
 ![file structure](filestructure.png)
 
+At this point, you should create your package.json file with the command `npm init`. This will give you create for creating this project and it will also continuously add your npm packages to it. This will help anyone looking to fork your project and recreate it. 
+When you run the `npm init` command from command line, you will be ask a series of questions such as Project Name, the version of it, the repo, and the author. It's pretty self explanatory and easy to follow. 
+
+Now you'll want to install your npm packages and finish setting up your environment. 
+The two packages are express, and body-parser. User the commands `npm install express` and `npm install body-parser` respectively to add these packages to your folder. 
+
+What do these do? Express allows you to build routes for your website. So any file you want to host on your server and whatever route you specify like "/", or  "/api", that hang off the domain are created by express. For more information on express.js, see the npm information [here](https://www.npmjs.com/package/express).
+
+Body-parser allows us to send and recieve JSON objects to and from the server. For more information on this package, look [here](https://www.npmjs.com/package/body-parser).
+
+### Building the application
+Your environment is all set and ready to go! If you have not, build out your home.html and survey.html pages. I used [Bootstrap 4](https://getbootstrap.com/) to build my site. Remember to use the jQuery and other links from Bootstrap so that all button presses or animated function will work appropriately. 
+
+
+
+
 
 
 
