@@ -1,15 +1,15 @@
 
 # FriendFinder
-[Try the application ](https://warm-sands-98393.herokuapp.com/)
-FriendFinder matches the user with a potential 'friend' based on how similarly they score on the survey. The friend with the closest value to the user will be the winning match. The user will see the recommendation pop onto the screen with Bootstrap's modal functionality.  
+[Try the application here](https://warm-sands-98393.herokuapp.com/).
+FriendFinder matches the user with a potential 'friend' based on how similarly they score on the survey. The friend with the closest value to the user will be the winning match. The user will see the recommendation pop onto the screen with the use of a bootstrap's modal.  
 
 ### Getting Started
-To begin, I would create the 10 question survey (and each question must be a scale from 1 to 5(1 being least likely, 5 being most likely) or however you prefer to set up your questions. The questions must have a uniform feel with the way the user is inputting the data. Open-ended questions, text answers or any question that does not fit the numeric scale format will skew the results or will stop the application from finishing the program and pairing the user with a new friend. 
+To begin, I would recommend creating a 10 questions survey (and each question must be a scale from 1 to 5(1 being least likely, 5 being most likely). The only requirement is that each question as a scale of numeric choices. The questions must have a uniform feel with the way the user is inputting the data. This makes it easier for us to create the logic behind the applications recommendation. Open-ended questions, text answers or any other question form that does not fit the numeric scale format will skew the results or will stop the application from finishing the program and pairing the user with a new friend. 
 
-I used bootstrap's form to quickly create my questions, scale and submit button on my survey.html file. 
+I used bootstrap's form to quickly create my questions with a correspondng numeric scale(from 1-5), and a submit button on my survey.html file. 
 
 ### Prerequisites
-This project utilizes Node.js, Express, and Body-Parser. 
+This project utilizes Node.js, Express, and Body-Parser. You need to have Node.js installed on your computer before building this application. If you do not have Node.js already installed on your machine, you can use this [link](https://nodejs.org/en/).
 
 Give examples
 Installing
