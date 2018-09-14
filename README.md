@@ -9,11 +9,19 @@ To begin, I would recommend creating a 10 questions survey (and each question mu
 I used bootstrap's form to quickly create my questions with a correspondng numeric scale(from 1-5), and a submit button on my survey.html file. 
 
 ### Prerequisites
-This project utilizes Node.js, Express, and Body-Parser. You need to have Node.js installed on your computer before building this application. If you do not have Node.js already installed on your machine, you can use this [link](https://nodejs.org/en/).
+This project utilizes Node.js, Express, and Body-Parser. You need to have Node.js installed on your computer before building this application. If you do not have Node.js already installed on your machine, you can use this [link](https://nodejs.org/en/). Once you have node.js you'll be able to start building your own friend finding application. 
 
-Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
+
+### Installing
+Once you're in your file that will hold your application, install your npm packages. You can build your folder from command line with `mkdir` function followed by the name of your folder. For example: `mkdir friendFinder` will create a folder called, "friendFinder". 
+Next from terminal, move into the file with this command from terminal: `cd friendFinder`. 
+
+Now that your are in your file. create the files you new to run this application. The `touch` command will create your file. 
+Next, create your server.js file. This is file that will run and connect all of the pieces of this project to create a working application. You will have all of your routes and corresponding files and logic connected to this page to create this program. 
+
+After you `touch server.js` make your app directory with the command `mkdir app`. Enter this fold with `cd app`. Now that you are in this file, repeat the earlier commands until you have a file/folder system that looks like the image below. all of your other files will be in your app directory. To move out of a file use the command `cd ../`, and to move out of two folders try `cd ../../`.
+
+
 
 Say what the step will be
 
