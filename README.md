@@ -22,6 +22,7 @@ Next, create your server.js file. This is file that will run and connect all of 
 After you `touch server.js` make your app directory with the command `mkdir app`. Enter this fold with `cd app`. Now that you are in this file, repeat the earlier commands until you have a file/folder system that looks like the image below. all of your other files will be in your app directory. To move out of a file use the command `cd ../`, and to move out of two folders try `cd ../../`.
 
 ![file structure][filestructure.png]
+![file system][filestructure.png]
 
 
 
