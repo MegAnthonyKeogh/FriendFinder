@@ -36,6 +36,13 @@ Body-parser allows us to send and recieve JSON objects to and from the server. F
 ### Building the application
 Your environment is all set and ready to go! If you have not, build out your home.html and survey.html pages. I used [Bootstrap 4](https://getbootstrap.com/) to build my site. Remember to use the jQuery and other links from Bootstrap so that all button presses or animated function will work appropriately. 
 
+Next in your friend.js file, you will want to build out 3 friends with their names, a link to a photo of them, and an array of scores (all different). This dummy text is to test whether or not your logic is working correctly. 
+
+I created an array name users and in it I have 3 objects. The array in each object has the same number of questions as in the survey. Remember to `module.exports = users;` at the bottom of this file so that you can use this information in another file on your site. 
+
+Now the fun begins! 
+Next, you'll want to go back to your survey.html file. Here we are going to create an "on click" event that will take the users data, turn it into an object and compare it against the other users in our array. I used jQuery to run my on click function. Remember to have a link to jQuery's CDN. 
+
 
 
 
