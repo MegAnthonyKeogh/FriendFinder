@@ -43,52 +43,121 @@ I created an array name users and in it I have 3 objects. The array in each obje
 Now the fun begins! 
 Next, you'll want to go back to your survey.html file. Here we are going to create an "on click" event that will take the users data, turn it into an object and compare it against the other users in our array. I used jQuery to run my on click function. Remember to have a link to jQuery's CDN. 
 
+Below your HTML and CSS for the page include `<script> logic goes here </script>` tags. This is your 'on click' event and it will turn the information from the user into an object. The object is the newUser. The `$("#submit")` ties the function to the submit button by using jQuery to connect to the button via the button's id. The newUser object has 3 key value pairs. The name of the user, the user's picture and an array of scores from the survey. Here is the code below:
+
+`      $("#submit").on("click", function (event) {
+            event.preventDefault();
+            var newUser = {
+                name: $("#name").val().trim(),
+                photo: $("#pic").val().trim(),
+                scores: [
+                    parseInt($("#Q1").val()),
+                    parseInt($("#Q2").val()),
+                    parseInt($("#Q3").val()),
+                    parseInt($("#Q4").val()),
+                    parseInt($("#Q5").val()),
+                    parseInt($("#Q6").val()),
+                    parseInt($("#Q7").val()),
+                    parseInt($("#Q8").val()),
+                    parseInt($("#Q9").val()),
+                    parseInt($("#Q10").val())
+                ]
+            }`
+            
+  The next step is to send that information to be compared against the other users in the array. 
+  beneath that code use this function: 
+  
+  `   $.post("/survey", newUser)
+                .done(function (winner) {
+                    $("#title").text("You matched with " + winner.name);
+                    $("#photo").attr("src", winner.photo);
+                    $("#photo").html("<img src=" + winner.photo + " width='400px'>")
+                    $("#myModal").modal("toggle");
 
 
+                    //alert("you matched with " + winner.name + winner.photo);
+                });`
+  `
+  This code sends the infomration to the /survey route as an object named, "newUser".
+  
+  Disregard the `.done` promise right now. It's not being used yet. 
+  Now, look at htmlRoutes.js. Look at this route:
+  `  app.post("/survey", function (req, res) {
+    newUser = req.body;
+    theBigCompare(newUser);
+    //res.json(winner);
+
+    return res.json(winner);
+
+  });`
+  
+  This post takes the newUser object and passes it into a function called, "theBigCompare". The res (result) from that function is shared on the /survey page. 
+  
+  If you look towards the top of the htmlRoutes.js file you will see the bigCompare function and the global variables associated with it. Here is the code below:
+  `var users = require("../data/friends.js")
+var newUser = null;
+var result = null;
+var winner = null;
+var winnerImg = null;
 
 
+function theBigCompare(newUser) {
+  for (i = 0; i < users.length; i++) {
+    var newarray = newUser.scores.map(function (item, index) {
 
+      if (item > users[i].scores[index]) {
 
-Say what the step will be
+        return item - users[i].scores[index];
 
-Give the example
-And repeat
+      } else {
+        return users[i].scores[index] - item;
+      }
+    })
+    console.log(newarray);
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+    var sum = null;
 
-Running the tests
-Explain how to run the automated tests for this system
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    sum = newarray.reduce(reducer);
+    console.log("sum = " + sum);
 
-Break down into end to end tests
-Explain what these tests test and why
+    if (result === null) {
+      result = sum;
+      winner = users[i];
+      console.log("first match is " + users[i].name + " with a sum of " + sum);
 
-Give an example
-And coding style tests
-Explain what these tests test and why
+    } else if (result > sum) {
+      result = sum;
+      winner = users[i];
+      winnerImg = users[i].photo
+      console.log("new match" + users[i].name + "with a sum of " + sum);
 
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
+    } else if (result < sum) {
 
-Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+      console.log("do nothing");
+
+    } else {
+      console.log("not a better match, " + users[i].name + "is still the better match " + result);
+    }
+  }`
+  
+  The first step I did was require the array of users already in the system by connecting the data in the variable users.
+  Next, I set some global variables I need for my logic. Those are the newUser, result, and winner. Next the function begins.  By passing in the newUser, I'm going to compare the scores from all of the users against the score of the newUser. By using the map function, I'm comparing each score from the survey between the users. My if/else statement allows me to compare each score without getting negative numbers. 
+  
+  Next I push this newarray variable(which is an array of numbers that is the difference between the newUser and the current user) and use the reduce function to get the sum total of the new array. 
+  
+  Finally, I use if else statements to compare all of the new reduced numbers to find the smallest number. The smallest number is the user that answer the most like the newUser and thus is the match. 
+
 
 Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
+This is the first version of this project.
 
-Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+Author
+Megan Anthony
+
 
 License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is unlicensed .
 
 Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc
+Thank you to Ed Brennan for walking me through the logic to build this application.
