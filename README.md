@@ -1,6 +1,6 @@
 
 # FriendFinder
-[Try the application here](https://warm-sands-98393.herokuapp.com/).
+[Try the application here](https://glacial-eyrie-34031.herokuapp.com/survey).
 FriendFinder matches the user with a potential 'friend' based on how similarly they score on the survey. The friend with the closest value to the user will be the winning match. The user will see the recommendation pop onto the screen with the use of a bootstrap's modal.  
 
 ### Getting Started
