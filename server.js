@@ -8,6 +8,7 @@ var PORT = process.env.PORT || 3000;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "/app/public")));
  
 // parse application/json
 app.use(bodyParser.json());
